@@ -1,0 +1,46 @@
+﻿@model List<Employee>
+
+<title>Employee Details</title>
+<body>
+    <h2 id="Emp">Employees Records</h2>
+    <a asp-action="AddEmployee" asp-controller="Home" class="btn btn-primary btn-xs pull-right">Add Employee</a>
+    <br />
+
+
+    <table class="table table-light table-striped mt-5">
+        <tr>
+            <th>
+                Emp ID
+            </th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Designation</th>
+            <th>Employee Status</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td id="emp">@item.Emp_Id</td>
+                <td>@item.Employee_Name</td>
+                <td>@item.Email</td>
+                <td>@item.Gender</td>
+                <td>@item.Age</td>
+                <td>@item.Designation</td>
+                <td>@item.Emp_Status</td>
+                <td role="group">
+                    <a href="/Home/EmployeeDetails/@item.Emp_Id"><i class="bi bi-view-list" title="Details"></i></a>
+                    <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Emp_Id"><i class="bi bi-pencil-square" title="Update"></i></a>
+                    <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Emp_Id" title="Delete">
+                        <i class="bi bi-archive-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</body>
